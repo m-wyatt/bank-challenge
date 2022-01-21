@@ -22,4 +22,13 @@ describe('Customer Tests:', () => {
         expect(actual).toBeUndefined();
 
     })
+
+    it('should return error if name argument not string', () => {
+        // Setup
+        const testInput = 1;
+        // Evaluate
+        const actual = new Customer(testInput);
+        // Verify
+        expect(function () { actual }).toThrow(new Error('Customer name must be a string.'));
+    })
 })
