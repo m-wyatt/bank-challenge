@@ -1,6 +1,7 @@
 export class Customer {
     #name;
     #currentBalance;
+    transactions = [];
 
     constructor(name, currentBalance = 0) {
         if (typeof name === "string") {
@@ -15,6 +16,7 @@ export class Customer {
         } else {
             throw new Error('Current balance must be a number.');
         }
+        this.transactions = this.transactions;
 
     }
 

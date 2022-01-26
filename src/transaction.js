@@ -1,6 +1,7 @@
 export class Transaction {
     #date;
-    #amount
+    #amount;
+
 
     constructor(date, amount) {
         if (date instanceof Date) {
@@ -14,6 +15,8 @@ export class Transaction {
         } else {
             throw new Error('Transaction amount must be a number.');
         }
+
+
     }
 
     getDate() {
