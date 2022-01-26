@@ -90,7 +90,8 @@ describe('Customer Tests:', () => {
         const expected = 0;
 
         // Evaluate
-        const actual = testCustomer.transactions.length
+        // This test slightly redundant now as almost identical to "access transactions through getter" below
+        const actual = testCustomer.getTransactions.length;
 
         // Verify
         expect(actual).toBe(expected);
