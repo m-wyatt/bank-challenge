@@ -77,4 +77,4 @@ describe('Customer Tests:', () => {
         // Verify
         expect(function () { new Customer(...testInput) }).toThrow(new Error('Current balance must be a number.'));
     })
-})
+});
