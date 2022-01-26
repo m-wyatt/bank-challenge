@@ -12,7 +12,7 @@ describe('Customer Tests:', () => {
 
     })
 
-    it('should be not be able to return customer name property directly', () => {
+    it('should not be able to return customer name property directly', () => {
         // Setup
         const testInput = 'George';
         const testCustomer = new Customer(testInput);
@@ -53,7 +53,7 @@ describe('Customer Tests:', () => {
         // Evaluate
         const actual = testCustomer.getCurrentBalance();
         // Verify
-        expect(actual).toBe(testInput);
+        expect(actual).toBe(testInput[1]);
 
     })
 
@@ -70,11 +70,11 @@ describe('Customer Tests:', () => {
 
     it('should return error if customer balance argument not number', () => {
         // Setup
-        const testInput = "example";
+        const testInput = ["John", "not a number"];
 
         // Evaluate
 
         // Verify
-        expect(function () { new Customer(testInput) }).toThrow(new Error('Current balance must be a number.'));
+        expect(function () { new Customer(...testInput) }).toThrow(new Error('Current balance must be a number.'));
     })
 })
