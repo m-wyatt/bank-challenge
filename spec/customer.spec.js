@@ -96,4 +96,30 @@ describe('Customer Tests:', () => {
         expect(actual).toBe(expected);
 
     })
+
+    it("shouldn't return transactions when accessed directly", () => {
+        // Setup
+        const testCustomer = new Customer("John", 15000);
+        const expected = undefined;
+
+        // Evaluate
+        const actual = testCustomer.transactions;
+
+        // Verify
+        expect(actual).toBe(expected);
+
+    })
+
+    it("should return transactions when accessed through getter", () => {
+        // Setup
+        const testCustomer = new Customer("John", 15000);
+        const expected = 0;
+
+        // Evaluate
+        const actual = testCustomer.getTransactions.length;
+
+        // Verify
+        expect(actual).toBe(expected);
+
+    })
 });
