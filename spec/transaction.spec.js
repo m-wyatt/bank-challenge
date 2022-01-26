@@ -37,7 +37,7 @@ describe('Transaction Tests:', () => {
     it('should be able to return transaction amount with getter', () => {
         // Setup
         const testInput = [new Date(), 10];
-        const testCustomer = new Transaction(...testInput);
+        const testTransaction = new Transaction(...testInput);
         // Evaluate
         const actual = testTransaction.getAmount();
         // Verify
@@ -48,7 +48,7 @@ describe('Transaction Tests:', () => {
     it('should not be able to return transaction amount directly', () => {
         // Setup
         const testInput = [new Date(), 10];
-        const testCustomer = new Transaction(...testInput);
+        const testTransaction = new Transaction(...testInput);
         // Evaluate
         const actual = testTransaction.amount;
         // Verify
