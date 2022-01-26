@@ -77,4 +77,15 @@ describe('Customer Tests:', () => {
         // Verify
         expect(function () { new Customer(...testInput) }).toThrow(new Error('Current balance must be a number.'));
     })
+
+    it('should have empty default array of transactions', () => {
+        // Setup
+
+        // Evaluate
+        const testCustomer = new Customer("John", 15000);
+
+        // Verify
+        expect(testCustomer.transactions.length).toBe(0);
+
+    })
 });
