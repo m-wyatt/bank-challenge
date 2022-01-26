@@ -1,7 +1,7 @@
 import { Customer } from '../src/customer.js';
 
 describe('Customer Tests:', () => {
-    it('should be able to return customer name property', () => {
+    it('should be able to return customer name property with getter', () => {
         // Setup
         const testInput = 'George';
         const testCustomer = new Customer(testInput);
@@ -9,6 +9,17 @@ describe('Customer Tests:', () => {
         const actual = testCustomer.getName();
         // Verify
         expect(actual).toBe(testInput);
+
+    })
+
+    it('should be not be able to return customer name property directly', () => {
+        // Setup
+        const testInput = 'George';
+        const testCustomer = new Customer(testInput);
+        // Evaluate
+        const actual = testCustomer.name;
+        // Verify
+        expect(actual).toBe(undefined);
 
     })
 
@@ -32,6 +43,38 @@ describe('Customer Tests:', () => {
         // Evaluate
 
         // Verify
-        expect(function () { new Customer(1) }).toThrow(new Error('Customer name must be a string.'));
+        expect(function () { new Customer(testInput) }).toThrow(new Error('Customer name must be a string.'));
+    })
+
+    it('should be able to return customer balance property with getter', () => {
+        // Setup
+        const testInput = ["John", 10000];
+        const testCustomer = new Customer(...testInput);
+        // Evaluate
+        const actual = testCustomer.getCurrentBalance();
+        // Verify
+        expect(actual).toBe(testInput);
+
+    })
+
+    it('should not be able to return customer balance property directly', () => {
+        // Setup
+        const testInput = ['John', 10000];
+        const testCustomer = new Customer(...testInput);
+        // Evaluate
+        const actual = testCustomer.name;
+        // Verify
+        expect(actual).toBe(undefined);
+
+    })
+
+    it('should return error if customer balance argument not number', () => {
+        // Setup
+        const testInput = "example";
+
+        // Evaluate
+
+        // Verify
+        expect(function () { new Customer(testInput) }).toThrow(new Error('Current balance must be a number.'));
     })
 })
