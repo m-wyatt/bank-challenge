@@ -3,19 +3,19 @@ import { Transaction } from '../src/transaction.js';
 describe('Transaction Tests:', () => {
     it('should be able to return transaction date property with getter', () => {
         // Setup
-        const testInput = new Date();
-        const testTransaction = new Transaction(testInput);
+        const testInput = [new Date(), 5];
+        const testTransaction = new Transaction(...testInput);
         // Evaluate
-        const actual = testTransaction.getName();
+        const actual = testTransaction.getDate();
         // Verify
-        expect(actual).toBe(testInput);
+        expect(actual).toBe(testInput[0]);
 
     })
 
     it('should not be able to return transaction date property directly', () => {
         // Setup
-        const testInput = new Date();
-        const testTransaction = new Transaction(testInput);
+        const testInput = [new Date(), 5];
+        const testTransaction = new Transaction(...testInput);
         // Evaluate
         const actual = testTransaction.date;
         // Verify
