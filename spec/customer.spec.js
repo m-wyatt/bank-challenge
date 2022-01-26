@@ -86,11 +86,11 @@ describe('Customer Tests:', () => {
 
     it('should have empty default array of transactions', () => {
         // Setup
-        const actual = testCustomer.transactions.length
+        const testCustomer = new Customer("John", 15000);
         const expected = 0;
 
         // Evaluate
-        const testCustomer = new Customer("John", 15000);
+        const actual = testCustomer.transactions.length
 
         // Verify
         expect(actual).toBe(expected);
