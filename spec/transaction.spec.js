@@ -6,7 +6,7 @@ describe('Transaction Tests:', () => {
         const testInput = new Date();
         const testTransaction = new Transaction(testInput);
         // Evaluate
-        const actual = testCustomer.getName();
+        const actual = testTransaction.getName();
         // Verify
         expect(actual).toBe(testInput);
 
@@ -50,7 +50,7 @@ describe('Transaction Tests:', () => {
         const testInput = [new Date(), 10];
         const testCustomer = new Transaction(...testInput);
         // Evaluate
-        const actual = testCustomer.amount;
+        const actual = testTransaction.amount;
         // Verify
         expect(actual).toBe(undefined);
 
@@ -63,6 +63,6 @@ describe('Transaction Tests:', () => {
         // Evaluate
 
         // Verify
-        expect(function () { new Customer(...testInput) }).toThrow(new Error('Transaction amount must be a number.'));
+        expect(function () { new Transaction(...testInput) }).toThrow(new Error('Transaction amount must be a number.'));
     })
 });
