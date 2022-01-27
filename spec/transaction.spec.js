@@ -86,7 +86,7 @@ describe('Transaction Tests:', () => {
         it('should be able to access newBalance with a getter', () => {
             // Setup
             const testTransaction = new Transaction(new Date(), 10);
-            const expected = null;
+            const expected = 0;
 
             // Evaluate
             const actual = testTransaction.getNewBalance();
@@ -95,10 +95,10 @@ describe('Transaction Tests:', () => {
             expect(actual).toEqual(expected);
         });
 
-        it('should initialise with null new balance', () => {
+        it('should initialise with zero new balance', () => {
             // Setup
             const testTransaction = new Transaction(new Date(), 10);
-            const expected = null;
+            const expected = 0;
 
             // Evaluate
             const actual = testTransaction.getNewBalance();
