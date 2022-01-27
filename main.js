@@ -1,5 +1,6 @@
 import { Customer } from './src/customer.js';
 import { Transaction } from './src/transaction.js';
+import { Statement } from './src/statement.js';
 
 // Create a new customer:
 const customer1 = new Customer("Matt");
@@ -24,4 +25,7 @@ console.log(credit1.getNewBalance()); // transaction now also contains newBalanc
 // Debit is void if brings customer balance below 0 (but still added to history):
 customer1.addTransaction(debit1);
 console.log(debit1.getNewBalance());
+
+Statement.printHeading(40);
+Statement.printHeading(2);
 
