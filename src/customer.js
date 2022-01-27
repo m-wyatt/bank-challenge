@@ -38,13 +38,18 @@ export class Customer {
     addTransaction(transaction) {
         // if (transaction instanceof Transaction) {
         // Adding above condition makes my tests fail since they use MockTransaction...
+
         const newBalance = this.#currentBalance + transaction.getAmount();
         if (newBalance >= 0) {
-            this.#transactions.push(transaction);
             this.#currentBalance = newBalance;
             transaction.setNewBalance(newBalance);
+        } else {
+            transaction.setNewBalance("void");
+            // and currentBalance remains unchanged
         }
+        this.#transactions.push(transaction);
         return this.#currentBalance;
+
         // } else throw new Error('Only instances of Transaction class can be added to customer transactions.');
     }
 }

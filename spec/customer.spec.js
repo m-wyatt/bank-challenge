@@ -228,19 +228,21 @@ describe('Customer Tests:', () => {
             expect(setNewBalanceSpy).toHaveBeenCalledOnceWith(expected);
         });
 
-        it('should not add transaction if newBalance will become negative', () => {
-            // Setup
-            const testTransaction = new MockTransactionDebit();
-            const testCustomer = new Customer('James'); // currentBalance 0
-            const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(-20);
+        // REMOVED BELOW SINCE WANT TO KEEP A RECORD OF TRANSACTION EVEN IF IT IS VOID AND DOESN'T CHANGE currentBalance
 
-            // Evaluate
-            testCustomer.addTransaction(testTransaction);
+        // it('should not add transaction if newBalance will become negative', () => {
+        //     // Setup
+        //     const testTransaction = new MockTransactionDebit();
+        //     const testCustomer = new Customer('James'); // currentBalance 0
+        //     const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(-20);
 
-            // Verify
-            expect(testCustomer.getTransactions()).not.toContain(testTransaction);
+        //     // Evaluate
+        //     testCustomer.addTransaction(testTransaction);
 
-        });
+        //     // Verify
+        //     expect(testCustomer.getTransactions()).not.toContain(testTransaction);
+
+        // });
 
         it('should make transaction newBalance void if currentBalance would become negative', () => {
             // Setup
