@@ -29,3 +29,13 @@ console.log(debit1.getNewBalance());
 Statement.printHeading(40);
 Statement.printHeading(2);
 
+
+
+
+let now = new Date();
+const datestring = now.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+});
+console.log(datestring);

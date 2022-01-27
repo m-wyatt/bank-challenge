@@ -1,4 +1,5 @@
 import { Statement } from '../src/statement.js'
+import { Transaction } from '../src/transaction.js'
 
 describe('Statement Tests: ', () => {
     it('should print statement heading with static method', () => {
@@ -19,13 +20,15 @@ describe('Statement Tests: ', () => {
         // Setup
         const printTransactionSpy = spyOn(Statement, 'printTransaction').and.callThrough();
         const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-        const input = 20;
+        const testTransaction = new Transaction(new Date(), 20);
+        testTransaction.setNewBalance(20);
+        const input = [testTransaction, 20];
 
         // Execute
-        Statement.printTransaction(input);
+        Statement.printTransaction(...input);
 
         // Verify
-        expect(printTransactionSpy).toHaveBeenCalledOnceWith(input);
+        expect(printTransactionSpy).toHaveBeenCalledOnceWith(...input);
         expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     })
 })
