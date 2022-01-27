@@ -32,5 +32,8 @@ export class Transaction {
         return this.#newBalance;
     }
 
+    setNewBalance(newBalance) {
+        this.#newBalance = newBalance;
+    }
 
 }

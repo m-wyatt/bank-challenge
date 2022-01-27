@@ -72,6 +72,8 @@ describe('Transaction Tests:', () => {
         expect(function () { new Transaction(...testInput) }).toThrow(expected);
     });
 
+
+
     it('should be able to access newBalance with a getter', () => {
         // Setup
         const testTransaction = new Transaction(new Date(), 10);
@@ -103,6 +105,20 @@ describe('Transaction Tests:', () => {
 
         // Evaluate
         const actual = testTransaction.newBalance;
+
+        // Verify
+        expect(actual).toEqual(expected);
+    });
+
+    it('should be able to set newBalance with a setter', () => {
+        // Setup
+        const input = 10;
+        const testTransaction = new Transaction(new Date(), 10);
+        const expected = input;
+
+        // Evaluate
+        testTransaction.setNewBalance(input);
+        const actual = testTransaction.getNewBalance();
 
         // Verify
         expect(actual).toEqual(expected);

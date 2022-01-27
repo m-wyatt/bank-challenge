@@ -4,12 +4,16 @@ class MockTransaction {
     date = new Date();
     amount = 20;
     newBalance = 20; // James' currentBalance = 0, hence 0+20
+    getAmount = () => { };
+    setNewBalance = () => { };
 }
 
 class MockTransactionWithNullNewBalance {
     date = new Date();
     amount = 20;
     newBalance = null;
+    getAmount = () => { };
+    setNewBalance = () => { };
 }
 
 

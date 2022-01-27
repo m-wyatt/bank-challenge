@@ -34,6 +34,8 @@ export class Customer {
 
     addTransaction(transaction) {
         this.#transactions.push(transaction);
+        const newBalance = this.#currentBalance + transaction.getAmount();
+        transaction.setNewBalance(newBalance);
         this.#currentBalance = transaction.newBalance;
         return this.#currentBalance;
     }
