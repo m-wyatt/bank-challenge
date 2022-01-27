@@ -12,9 +12,20 @@ class MockTransaction {
 
 };
 
+const mockTransaction1 = new MockTransaction();
+const mockTransaction2 = new MockTransaction();
+const mockTransaction3 = new MockTransaction();
+mockTransaction2.newBalance = 70;
+mockTransaction3.amount = -10;
+mockTransaction3.newBalance = 60;
+
 class MockCustomer {
-    transactions = [];
+    transactions = [mockTransaction1, mockTransaction2, mockTransaction3];
 };
+
+// QUESTION: Is it okay to create a mock containing other mocks like this? Is there a more standard way?
+
+
 
 describe('Statement Tests: ', () => {
     it('should print statement heading with static method', () => {
@@ -47,11 +58,12 @@ describe('Statement Tests: ', () => {
         Statement.printTransaction(...input);
 
         // Verify
-        expect(printTransactionSpy).toHaveBeenCalledOnceWith(...input);
         expect(consoleLogSpy).toHaveBeenCalledTimes(1);
         expect(getDateSpy).toHaveBeenCalled();
         expect(getAmountSpy).toHaveBeenCalled();
         expect(getNewBalanceSpy).toHaveBeenCalled();
+
+        // QUESTION: Does this actually test that printTransaction does what I want? Should I be checking exact output of console.log too?
     })
 
     it('should print customer statement with static method', () => {
@@ -66,7 +78,6 @@ describe('Statement Tests: ', () => {
         Statement.printStatement(input);
 
         // Verify
-        expect(printStatementSpy).toHaveBeenCalledOnceWith(input);
         expect(consoleLogSpy).toHaveBeenCalledTimes(expected);
     })
 })
