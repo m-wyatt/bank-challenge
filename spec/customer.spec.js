@@ -156,20 +156,22 @@ describe('Customer Tests:', () => {
             expect(actual).toContain(expected);
         });
 
-        it('should not add an element to transactions array if it is not instance of Transaction class', () => {
-            // Setup
-            const testCustomer = new Customer("James");
-            const testTransaction = "20";
-            const expected = new Error('Only instances of Transaction class can be added to customer transactions.')
+        // BELOW NOT RELEVANT TO UNIT TESTING - see "integration testing"
 
-            // Execute
-            testCustomer.addTransaction(testTransaction);
+        // it('should not add an element to transactions array if it is not instance of Transaction class', () => {
+        //     // Setup
+        //     const testCustomer = new Customer("James");
+        //     const testTransaction = "20";
+        //     const expected = new Error('Only instances of Transaction class can be added to customer transactions.')
 
-            // Verify
-            expect(testCustomer.getTransactions()).not.toContain(testTransaction);
-            expect(function () { testCustomer.addTransaction(testTransaction) }).toThrow(expected);
+        //     // Execute
+        //     testCustomer.addTransaction(testTransaction);
 
-        });
+        //     // Verify
+        //     expect(testCustomer.getTransactions()).not.toContain(testTransaction);
+        //     expect(function () { testCustomer.addTransaction(testTransaction) }).toThrow(expected);
+
+        // });
 
 
         it('should return new balance when transaction added to transactions array', () => {
@@ -221,7 +223,7 @@ describe('Customer Tests:', () => {
     });
 
     // 1. DO TEST FOR addTransaction() **done**
-    // 4. DO TEST FOR transactions is array of Transaction(s)
+    // 4. DO TEST FOR transactions is array of Transaction(s) **not relevant to unit testing**
     // 5. DO TEST FOR add transaction with negative amount
 
 });

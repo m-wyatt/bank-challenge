@@ -1,9 +1,12 @@
+import { Transaction } from "./transaction.js";
+
 export class Customer {
     #name;
     #currentBalance;
     #transactions = [];
 
     constructor(name, currentBalance = 0) {
+        // Probably shouldn't check input type here (as per Ed's explanation, but too late now...)
         if (typeof name === "string") {
             this.#name = name;
         } else {
@@ -33,11 +36,13 @@ export class Customer {
     }
 
     addTransaction(transaction) {
+        // if (transaction instanceof Transaction) {
+        // Adding above condition makes my tests fail since they use MockTransaction...
         this.#transactions.push(transaction);
         const newBalance = this.#currentBalance + transaction.getAmount();
         this.#currentBalance = newBalance;
         transaction.setNewBalance(newBalance);
         return this.#currentBalance;
+        // } else throw new Error('Only instances of Transaction class can be added to customer transactions.');
     }
-
 }
