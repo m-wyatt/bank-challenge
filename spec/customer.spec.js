@@ -157,6 +157,20 @@ describe('Customer Tests:', () => {
         expect(actual).toEqual(expected);
     })
 
+    it('should change current balance to new balance when transaction added', () => {
+        // Setup
+        const testCustomer = new Customer("John");
+        const testTransaction = new MockTransaction();
+        const expected = testTransaction.newBalance;
+
+        // Evaluate
+        testCustomer.addTransaction(testTransaction);
+        const actual = testCustomer.getCurrentBalance();
+
+        // Verify
+        expect(actual).toEqual(expected);
+    })
+
     // 1. DO TEST FOR addTransaction() NEXT!
     // 4. DO TEST FOR transactions is array of Transaction(s)
 });
