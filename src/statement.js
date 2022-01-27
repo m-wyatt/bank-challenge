@@ -1,9 +1,11 @@
 export class Statement {
 
+    static createSpacer = width => " ".repeat(width);
+
     static printHeading(columnWidth) {
         const spacerWidth = columnWidth - 8 > 0 ? columnWidth - 8 : 1;
-        const columnSpacer = " ".repeat(spacerWidth);
-        const heading = "date       || credit " + columnSpacer + "|| debit  " + columnSpacer + "|| balance" + columnSpacer;
+        const columnSpacer = this.createSpacer(spacerWidth);
+        const heading = "date      || credit " + columnSpacer + "|| debit  " + columnSpacer + "|| balance";
         console.log(heading);
     };
 
@@ -15,17 +17,14 @@ export class Statement {
             year: "numeric"
         });
 
-        let credit = "";
-        let debit = "";
-
-        if (transaction.getAmount() > 0) {
-            credit = transaction.getAmount().toString();
-        } else {
-            debit = (transaction.getAmount() * (-1)).toString();
-        }
+        let credit = (transaction.getAmount() > 0) ? transaction.getAmount().toString() : "";
+        let debit = (transaction.getAmount() <= 0) ? (transaction.getAmount() * (-1)).toString() : "";
 
         const balance = transaction.getNewBalance().toString();
 
-        console.log(date + "|| " + credit + " || " + debit + " || " + balance);
+        const creditSpacer = this.createSpacer(columnWidth - credit.length);
+        const debitSpacer = this.createSpacer(columnWidth - debit.length);
+
+        console.log(date + "|| " + credit + creditSpacer + "|| " + debit + debitSpacer + "|| " + balance);
     };
 };
