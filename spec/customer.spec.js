@@ -3,6 +3,7 @@ import { Customer } from '../src/customer.js';
 class MockTransaction {
     date = new Date();
     amount = 20;
+    newBalance = 20; // James' currentBalance = 0, hence 0+20
 }
 
 
@@ -132,7 +133,7 @@ describe('Customer Tests:', () => {
 
     it('should add a transaction to transactions array with a method', () => {
         // Setup
-        const testCustomer = new Customer("John");
+        const testCustomer = new Customer("James");
         const testTransaction = new MockTransaction();
         const expected = testTransaction;
 
@@ -146,7 +147,7 @@ describe('Customer Tests:', () => {
 
     it('should return new balance when transaction added to transactions array', () => {
         // Setup
-        const testCustomer = new Customer("John");
+        const testCustomer = new Customer("James");
         const testTransaction = new MockTransaction();
         const expected = testTransaction.amount;
 
@@ -159,7 +160,7 @@ describe('Customer Tests:', () => {
 
     it('should change current balance to new balance when transaction added', () => {
         // Setup
-        const testCustomer = new Customer("John");
+        const testCustomer = new Customer("James");
         const testTransaction = new MockTransaction();
         const expected = testTransaction.newBalance;
 
