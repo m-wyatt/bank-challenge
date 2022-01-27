@@ -172,6 +172,6 @@ describe('Customer Tests:', () => {
         expect(actual).toEqual(expected);
     })
 
-    // 1. DO TEST FOR addTransaction() NEXT!
+    // 1. DO TEST FOR addTransaction() **done**
     // 4. DO TEST FOR transactions is array of Transaction(s)
 });
