@@ -130,17 +130,18 @@ describe('Customer Tests:', () => {
 
     })
 
-    it('should add transaction to transactions array with a method', () => {
+    it('should add a transaction to transactions array with a method', () => {
         // Setup
         const testCustomer = new Customer("John");
         const testTransaction = new MockTransaction();
+        const expected = testTransaction;
 
         // Evaluate
         testCustomer.addTransaction(testTransaction);
-        const actual = testCustomer.getTransactions;
+        const actual = testCustomer.getTransactions();
 
         // Verify
-        expect(actual).toContain(testTransaction);
+        expect(actual).toContain(expected);
     })
 
     // 1. DO TEST FOR addTransaction() NEXT!

@@ -32,4 +32,8 @@ export class Customer {
         return this.#transactions;
     }
 
+    addTransaction(transaction) {
+        this.#transactions.push(transaction);
+    }
+
 }
