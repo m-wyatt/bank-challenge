@@ -27,4 +27,17 @@ export class Statement {
 
         console.log(date + "|| " + credit + creditSpacer + "|| " + debit + debitSpacer + "|| " + balance);
     };
+
+    static printStatement(customer) {
+
+        const balanceMaxLength = Math.max(customer.getTransactions().map(transaction => {
+            transaction.getNewBalance();
+        }));
+        const maxWidth = Math.max(balanceMaxLength, 8);
+        // max width is either length of date = 10 or length of newBalance if it is > 10
+        this.printHeading(maxWidth);
+        customer.getTransactions().forEach(transaction => {
+            this.printTransaction(transaction, maxWidth);
+        });
+    };
 };
