@@ -1,29 +1,33 @@
 import { Customer } from '../src/customer.js';
 
+class MockDate {
+
+};
+
 class MockTransactionCredit {
-    date = new Date();
+    date = new MockDate();
     amount = 20;
     newBalance = 20; // James' currentBalance = 0, hence 0+20
     getAmount = () => { };
     setNewBalance = () => { };
-}
+};
 
 class MockTransactionWithNullNewBalance {
-    date = new Date();
+    date = new MockDate();
     amount = 20;
     newBalance = null;
     getAmount = () => { };
     getNewBalance = () => { };
     setNewBalance = () => { };
-}
+};
 
 class MockTransactionDebit {
-    date = new Date();
+    date = new MockDate();
     amount = -20;
     newBalance = -20
     getAmount = () => { };
     setNewBalance = () => { };
-}
+};
 
 
 describe('Customer Tests:', () => {
@@ -261,9 +265,5 @@ describe('Customer Tests:', () => {
         });
 
     });
-
-    // 1. DO TEST FOR addTransaction() **done**
-    // 4. DO TEST FOR transactions is array of Transaction(s) **not relevant to unit testing**
-    // 5. DO TEST FOR add transaction with negative amount
 
 });

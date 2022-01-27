@@ -40,7 +40,8 @@ export class Customer {
         // Adding above condition makes my tests fail since they use MockTransaction...
 
         const newBalance = this.#currentBalance + transaction.getAmount();
-        if (newBalance >= 0) {
+        if (newBalance >= 0 || transaction.getAmount() >= 0) {
+            // Credit will always be added even if acct. balance already negative (just in case...)
             this.#currentBalance = newBalance;
             transaction.setNewBalance(newBalance);
         } else {

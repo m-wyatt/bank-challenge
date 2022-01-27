@@ -15,7 +15,7 @@ describe('Transaction Tests:', () => {
             // Verify
             expect(actual).toBe(expected);
 
-        })
+        });
 
         it('should not be able to return transaction date property directly', () => {
             // Setup
@@ -27,7 +27,7 @@ describe('Transaction Tests:', () => {
             // Verify
             expect(actual).toBe(expected);
 
-        })
+        });
 
 
         it('should return error if date parameter not instance of Date object', () => {
@@ -38,7 +38,7 @@ describe('Transaction Tests:', () => {
 
             // Verify
             expect(function () { new Transaction(testInput) }).toThrow(expected);
-        })
+        });
 
     });
 
@@ -54,7 +54,7 @@ describe('Transaction Tests:', () => {
             // Verify
             expect(actual).toBe(expected);
 
-        })
+        });
 
         it('should not be able to return transaction amount directly', () => {
             // Setup
@@ -66,7 +66,7 @@ describe('Transaction Tests:', () => {
             // Verify
             expect(actual).toBe(expected);
 
-        })
+        });
 
         it('should return error if transaction amount is not a number', () => {
             // Setup
@@ -135,7 +135,5 @@ describe('Transaction Tests:', () => {
 
     });
 
-    // 2. DO TEST FOR getNewBalance() **done**
-    // 3. DO TEST FOR customer.addTransaction() **done**
 
 });

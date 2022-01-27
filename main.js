@@ -1,14 +1,27 @@
 import { Customer } from './src/customer.js';
+import { Transaction } from './src/transaction.js';
 
-// class MockTransaction {
-//     date = new Date();
-//     amount = 20;
-// }
+// Create a new customer:
+const customer1 = new Customer("Matt");
+console.log(customer1.getName());
 
-// const testCustomer = new Customer("John");
-// const testTransaction = new MockTransaction();
+// Default balance is 0:
+console.log(customer1.getCurrentBalance());
 
-// // Evaluate
-// testCustomer.addTransaction(testTransaction);
-// const actual = testCustomer.getTransactions();
-// console.log(actual);
+// Create customer with custom initial balance:
+const customer2 = new Customer("Harry", 100);
+console.log(customer2.getCurrentBalance());
+
+// Create a new transaction:
+const credit1 = new Transaction(new Date(), 200);
+const debit1 = new Transaction(new Date(), -10);
+
+// Add transaction to a customer's transaction history:
+customer2.addTransaction(credit1);
+console.log(customer2.getCurrentBalance()); // current balance updated
+console.log(credit1.getNewBalance()); // transaction now also contains newBalance info
+
+// Debit is void if brings customer balance below 0 (but still added to history):
+customer1.addTransaction(debit1);
+console.log(debit1.getNewBalance());
+
