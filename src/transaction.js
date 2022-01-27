@@ -1,7 +1,7 @@
 export class Transaction {
     #date;
     #amount;
-
+    #newBalance;
 
     constructor(date, amount) {
         if (date instanceof Date) {
@@ -16,6 +16,7 @@ export class Transaction {
             throw new Error('Transaction amount must be a number.');
         }
 
+        this.#newBalance = null;
 
     }
 
@@ -25,6 +26,10 @@ export class Transaction {
 
     getAmount() {
         return this.#amount;
+    }
+
+    getNewBalance() {
+        return this.#newBalance;
     }
 
 
