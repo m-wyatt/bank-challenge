@@ -17,6 +17,14 @@ class MockTransactionWithNullNewBalance {
     setNewBalance = () => { };
 }
 
+class MockTransactionDebit {
+    date = new Date();
+    amount = -20;
+    newBalance = -20
+    getAmount = () => { };
+    setNewBalance = () => { };
+}
+
 
 describe('Customer Tests:', () => {
 
@@ -218,6 +226,21 @@ describe('Customer Tests:', () => {
             // Verify
             expect(actual).toEqual(expected);
             expect(setNewBalanceSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not add transaction if newBalance will become negative', () => {
+            // Setup
+            const testTransaction = new MockTransactionDebit();
+            const testCustomer = new Customer('James'); // currentBalance 0
+            const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(20);
+            const setNewBalanceSpy = spyOn(testTransaction, 'setNewBalance').and.callFake(newBalance => testTransaction.newBalance = newBalance);
+
+            // Evaluate
+            testCustomer.addTransaction(testTransaction);
+
+            // Verify
+            expect(testCustomer.getTransactions()).not.toContain(testTransaction);
+
         });
 
     });
