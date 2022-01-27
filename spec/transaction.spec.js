@@ -111,18 +111,19 @@ describe('Transaction Tests:', () => {
         expect(actual).toEqual(expected);
     });
 
-    // it('should calculate newBalance when adding transaction to a customer', () => {
-    //     // Setup
-    //     const testTransaction = new Transaction(new Date(), 10);
-    //     const testCustomer = new MockCustomer();
-    //     const expected = 10 // = customer.currentBalance + transaction.amount
+    it('should calculate newBalance when adding transaction to a customer', () => {
+        // Setup
+        const testTransaction = new Transaction(new Date(), 10);
+        const testCustomer = new MockCustomer();
+        const expected = 10 // = customer.currentBalance + transaction.amount
 
-    //     // Evaluate
-    //     const actual = testTransaction.getNewBalance();
+        // Evaluate
+        testCustomer.addTransaction(testTransaction);
+        const actual = testTransaction.getNewBalance();
 
-    //     // Verify
-    //     expect(actual).toEqual(expected);
-    // });
+        // Verify
+        expect(actual).toEqual(expected);
+    });
 
 
 
