@@ -34,8 +34,8 @@ export class Customer {
 
     addTransaction(transaction) {
         this.#transactions.push(transaction);
-        return transaction.newBalance;
         this.#currentBalance = transaction.newBalance;
+        return this.#currentBalance;
     }
 
 }
