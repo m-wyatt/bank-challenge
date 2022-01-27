@@ -6,6 +6,12 @@ class MockTransaction {
     newBalance = 20; // James' currentBalance = 0, hence 0+20
 }
 
+class MockTransactionWithNullNewBalance {
+    date = new Date();
+    amount = 20;
+    newBalance = null;
+}
+
 
 describe('Customer Tests:', () => {
     it('should be able to return customer name property with getter', () => {
@@ -171,6 +177,20 @@ describe('Customer Tests:', () => {
         // Verify
         expect(actual).toEqual(expected);
     })
+
+    it('should calculate transaction newBalance when adding transaction', () => {
+        // Setup
+        const testTransaction = new MockTransactionWithNullNewBalance();
+        const testCustomer = new Customer('James');
+        const expected = 20 // = customer.currentBalance + transaction.amount
+
+        // Evaluate
+        testCustomer.addTransaction(testTransaction);
+        const actual = testTransaction.newBalance;
+
+        // Verify
+        expect(actual).toEqual(expected);
+    });
 
     // 1. DO TEST FOR addTransaction() **done**
     // 4. DO TEST FOR transactions is array of Transaction(s)

@@ -1,8 +1,5 @@
 import { Transaction } from '../src/transaction.js';
 
-class MockCustomer {
-    currentBalance = 0;
-}
 
 describe('Transaction Tests:', () => {
     it('should be able to return transaction date property with getter', () => {
@@ -111,19 +108,7 @@ describe('Transaction Tests:', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('should calculate newBalance when adding transaction to a customer', () => {
-        // Setup
-        const testTransaction = new Transaction(new Date(), 10);
-        const testCustomer = new MockCustomer();
-        const expected = 10 // = customer.currentBalance + transaction.amount
 
-        // Evaluate
-        testCustomer.addTransaction(testTransaction);
-        const actual = testTransaction.getNewBalance();
-
-        // Verify
-        expect(actual).toEqual(expected);
-    });
 
 
 
