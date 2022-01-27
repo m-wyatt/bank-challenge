@@ -12,8 +12,13 @@ class MockTransactionWithNullNewBalance {
     date = new Date();
     amount = 20;
     newBalance = null;
+    // getAmount = () => this.amount; // don't see how to do it without defining this method
     getAmount = () => { };
+    getNewBalance = () => { };
+    // setNewBalance = (newBalance) => { this.newBalance = newBalance };
     setNewBalance = () => { };
+    // How to do it without redefining the methods?
+    // Tried looking at spies but don't see how it would help
 }
 
 
@@ -159,6 +164,7 @@ describe('Customer Tests:', () => {
         // Setup
         const testCustomer = new Customer("James");
         const testTransaction = new MockTransaction();
+        const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(20);
         const expected = testTransaction.amount;
 
         // Evaluate
@@ -172,6 +178,7 @@ describe('Customer Tests:', () => {
         // Setup
         const testCustomer = new Customer("James");
         const testTransaction = new MockTransaction();
+        const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(20);
         const expected = testTransaction.newBalance;
 
         // Evaluate
@@ -186,6 +193,8 @@ describe('Customer Tests:', () => {
         // Setup
         const testTransaction = new MockTransactionWithNullNewBalance();
         const testCustomer = new Customer('James');
+        const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(20);
+        const setNewBalanceSpy = spyOn(testTransaction, 'setNewBalance').and.callFake(newBalance => testTransaction.newBalance = newBalance);
         const expected = 20 // = customer.currentBalance + transaction.amount
 
         // Evaluate
@@ -194,6 +203,7 @@ describe('Customer Tests:', () => {
 
         // Verify
         expect(actual).toEqual(expected);
+        expect(setNewBalanceSpy).toHaveBeenCalledTimes(1);
     });
 
     // 1. DO TEST FOR addTransaction() **done**

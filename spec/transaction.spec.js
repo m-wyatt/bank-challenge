@@ -129,7 +129,7 @@ describe('Transaction Tests:', () => {
 
 
 
-    // 2. DO TEST FOR getNewBalance()
+    // 2. DO TEST FOR getNewBalance() **done**
     // 3. DO TEST FOR customer.addTransaction()
 
 });
