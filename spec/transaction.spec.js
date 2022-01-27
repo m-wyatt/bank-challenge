@@ -70,4 +70,8 @@ describe('Transaction Tests:', () => {
         // Verify
         expect(function () { new Transaction(...testInput) }).toThrow(expected);
     });
+
+    // 2. DO TEST FOR getNewBalance()
+    // 3. DO TEST FOR customer.addTransaction()
+
 });

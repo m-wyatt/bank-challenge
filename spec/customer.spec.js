@@ -1,5 +1,11 @@
 import { Customer } from '../src/customer.js';
 
+class MockTransaction {
+    date = new Date();
+    amount = 20;
+}
+
+
 describe('Customer Tests:', () => {
     it('should be able to return customer name property with getter', () => {
         // Setup
@@ -123,4 +129,20 @@ describe('Customer Tests:', () => {
         expect(actual).toBe(expected);
 
     })
+
+    it('should add transaction to transactions array with a method', () => {
+        // Setup
+        const testCustomer = new Customer("John");
+        const testTransaction = new MockTransaction();
+
+        // Evaluate
+        testCustomer.addTransaction(testTransaction);
+        const actual = testCustomer.getTransactions;
+
+        // Verify
+        expect(actual).toContain(testTransaction);
+    })
+
+    // 1. DO TEST FOR addTransaction() NEXT!
+    // 4. DO TEST FOR transactions is array of Transaction(s)
 });
