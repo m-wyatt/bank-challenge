@@ -30,11 +30,11 @@ export class Statement {
 
     static printStatement(customer) {
 
-        const balanceMaxLength = Math.max(customer.getTransactions().map(transaction => {
-            transaction.getNewBalance();
-        }));
-        const maxWidth = Math.max(balanceMaxLength, 8);
-        // max width is either length of date = 10 or length of newBalance if it is > 10
+        let maxWidth = 8;
+        for (let transaction of customer.getTransactions()) {
+            maxWidth = Math.max(maxWidth, transaction.getNewBalance().toString().length);
+        };
+
         this.printHeading(maxWidth);
         customer.getTransactions().forEach(transaction => {
             this.printTransaction(transaction, maxWidth);

@@ -26,16 +26,15 @@ console.log(credit1.getNewBalance()); // transaction now also contains newBalanc
 customer1.addTransaction(debit1);
 console.log(debit1.getNewBalance());
 
-Statement.printHeading(40);
-Statement.printHeading(2);
 
+// Adding more transactions to customer transaction history:
+const credit2 = new Transaction(new Date(), 1000);
+const debit2 = new Transaction(new Date(), -40);
+const debit3 = new Transaction(new Date(), -15);
 
+customer2.addTransaction(credit2);
+customer2.addTransaction(debit2);
+customer2.addTransaction(debit3);
 
-
-let now = new Date();
-const datestring = now.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric"
-});
-console.log(datestring);
+// Print customer transactions statement:
+Statement.printStatement(customer2);

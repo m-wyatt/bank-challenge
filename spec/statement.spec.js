@@ -32,15 +32,13 @@ class MockCustomer {
 describe('Statement Tests: ', () => {
     it('should print statement heading with static method', () => {
         // Setup
-        const printHeadingSpy = spyOn(Statement, 'printHeading').and.callThrough();
-        const consoleLogSpy = spyOn(console, 'log').and.callThrough();
+        const consoleLogSpy = spyOn(console, 'log')
         const input = 20;
 
         // Execute
         Statement.printHeading(input);
 
         // Verify
-        expect(printHeadingSpy).toHaveBeenCalledOnceWith(input);
         expect(consoleLogSpy).toHaveBeenCalledTimes(1);
     })
 
@@ -49,8 +47,7 @@ describe('Statement Tests: ', () => {
         const testTransaction = new MockTransaction();
         const input = [testTransaction, 20];
 
-        const printTransactionSpy = spyOn(Statement, 'printTransaction').and.callThrough();
-        const consoleLogSpy = spyOn(console, 'log').and.callThrough();
+        const consoleLogSpy = spyOn(console, 'log')
 
         const getDateSpy = spyOn(testTransaction, 'getDate').and.returnValue(testTransaction.date);
         const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(testTransaction.amount);
@@ -74,8 +71,7 @@ describe('Statement Tests: ', () => {
         const input = testCustomer;
         const expected = testCustomer.transactions.length + 1;
 
-        const printStatementSpy = spyOn(Statement, 'printStatement').and.callThrough();
-        const consoleLogSpy = spyOn(console, 'log').and.callThrough();
+        const consoleLogSpy = spyOn(console, 'log');
         const getTransactionsSpy = spyOn(testCustomer, 'getTransactions').and.returnValue(testCustomer.transactions);
 
         // There has to be a better way than spying on every single mock transaction.....
