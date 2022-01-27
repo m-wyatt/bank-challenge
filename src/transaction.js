@@ -16,7 +16,7 @@ export class Transaction {
             throw new Error('Transaction amount must be a number.');
         }
 
-        this.#newBalance = 0;
+        this.#newBalance = null;
 
     }
 

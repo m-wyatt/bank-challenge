@@ -225,8 +225,7 @@ describe('Customer Tests:', () => {
             const actual = testTransaction.newBalance;
 
             // Verify
-            expect(actual).toEqual(expected);
-            expect(setNewBalanceSpy).toHaveBeenCalledTimes(1);
+            expect(setNewBalanceSpy).toHaveBeenCalledOnceWith(expected);
         });
 
         it('should not add transaction if newBalance will become negative', () => {
@@ -241,6 +240,22 @@ describe('Customer Tests:', () => {
             // Verify
             expect(testCustomer.getTransactions()).not.toContain(testTransaction);
 
+        });
+
+        it('should make transaction newBalance void if currentBalance would become negative', () => {
+            // Setup
+            const testTransaction = new MockTransactionDebit();
+            const testCustomer = new Customer('James');
+            const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(-20);
+            const setNewBalanceSpy = spyOn(testTransaction, 'setNewBalance').and.callFake(newBalance => testTransaction.newBalance = "void");
+            const expected = "void";
+
+            // Evaluate
+            testCustomer.addTransaction(testTransaction);
+            const actual = testTransaction.newBalance;
+
+            // Verify
+            expect(setNewBalanceSpy).toHaveBeenCalledOnceWith(expected);
         });
 
     });
