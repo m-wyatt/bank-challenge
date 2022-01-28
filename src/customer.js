@@ -6,13 +6,14 @@ export class Customer {
     #transactions = [];
 
     constructor(name, currentBalance = 0) {
-        // Probably shouldn't check input type here (as per Ed's explanation, but too late now...)
+
         if (typeof name === "string") {
             this.#name = name;
         } else {
             throw new Error('Customer name must be a string.');
         }
         // QUESTION: Is there a better way to restrict type of parameters?
+        // ANSWER: Probably shouldn't check input type here anyway (as per Ed's explanation, but it's done now...)
 
         if (typeof currentBalance === "number") {
             this.#currentBalance = currentBalance;

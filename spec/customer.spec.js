@@ -10,6 +10,7 @@ class MockTransactionCredit {
     newBalance = 20; // James' currentBalance = 0, hence 0+20
     getAmount = () => { };
     setNewBalance = () => { };
+    // Not sure if method declarations as above are correct syntax. SEE: 'statement.spec.js'
 };
 
 class MockTransactionWithNullNewBalance {
@@ -115,12 +116,14 @@ describe('Customer Tests:', () => {
     describe('Customer transactions property tests: ', () => {
 
         it('should have empty default array of transactions', () => {
+            // This test slightly redundant now as almost identical to "access transactions through getter" below
+
             // Setup
             const testCustomer = new Customer("John", 15000);
             const expected = 0;
 
             // Evaluate
-            // This test slightly redundant now as almost identical to "access transactions through getter" below
+
             const actual = testCustomer.getTransactions.length;
 
             // Verify
