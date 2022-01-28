@@ -1,14 +1,24 @@
 import { Statement } from '../src/statement.js'
 import { Transaction } from '../src/transaction.js'
 
+class MockDate {
+    toLocaleDateString() {
+        return '28/01/2022';
+    };
+
+    // NOTE: I don't think methods defined with arrow functions as below are actually working:
+    // toLocaleDateString = () => {'28/01/2022'};
+    // If use above the statement is printed with date=undefined in the test output
+}
 
 class MockTransaction {
-    date = new Date();
+    date = new MockDate();
     amount = "20";
     newBalance = "50";
     getDate = () => { };
     getAmount = () => { };
     getNewBalance = () => { };
+    // Don't think above methods declarations work properly but doesn't matter since using .and.returnValue() anyway...
 
 };
 
@@ -47,7 +57,8 @@ describe('Statement Tests: ', () => {
         const testTransaction = new MockTransaction();
         const input = [testTransaction, 20];
 
-        const consoleLogSpy = spyOn(console, 'log')
+        const consoleLogSpy = spyOn(console, 'log').and.callThrough();
+        // QUESTION: How to call through console.log on a new line so test results display more nicely?
 
         const getDateSpy = spyOn(testTransaction, 'getDate').and.returnValue(testTransaction.date);
         const getAmountSpy = spyOn(testTransaction, 'getAmount').and.returnValue(testTransaction.amount);
@@ -71,10 +82,11 @@ describe('Statement Tests: ', () => {
         const input = testCustomer;
         const expected = testCustomer.transactions.length + 1;
 
-        const consoleLogSpy = spyOn(console, 'log');
+        const consoleLogSpy = spyOn(console, 'log').and.callThrough();
         const getTransactionsSpy = spyOn(testCustomer, 'getTransactions').and.returnValue(testCustomer.transactions);
 
         // There has to be a better way than spying on every single mock transaction.....
+        // At this point it's no different to adding the methods from Transaction to Mock Transaction in full
 
         // Mock transaction 1 spies
         const getDateSpy1 = spyOn(mockTransaction1, 'getDate').and.returnValue(mockTransaction1.date);
@@ -97,5 +109,6 @@ describe('Statement Tests: ', () => {
         // Verify
         expect(consoleLogSpy).toHaveBeenCalledTimes(expected);
         expect(getTransactionsSpy).toHaveBeenCalled();
+        // Should probably check all (9) of the above spies have been called too but not sure if necessary
     })
 })
